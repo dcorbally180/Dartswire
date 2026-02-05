@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DARTSWIRE • Darts News, Tournaments, Stats & Betting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --black: #000000;
+      --dark-bg: #0f0f0f;
+      --dark-gray: #1a1a1a;
+      --text-light: #e0e0e0;
+      --text-gray: #aaaaaa;
+      --red: #d32f2f;
+      --red-dark: #b71c1c;
+      --green: #1b5e20;
+      --green-light: #388e3c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--text-light);
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* Header */
+    header {
+      background: var(--dark-bg);
+      border-bottom: 4px solid var(--red);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+    }
+
+    .top-bar {
+      background: var(--green);
+      color: white;
+      text-align: center;
+      padding: 8px 0;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .logo-area {
+      padding: 25px 0 15px;
+      text-align: center;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4.5rem, 10vw, 8rem);
+      letter-spacing: 4px;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--red);
+    }
+
+    .main-nav {
+      background: var(--dark-gray);
+      padding: 12px 0;
+      text-align: center;
+    }
+
+    .main-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin: 0 18px;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+
+    .main-nav a:hover {
+      color: var(--red);
+    }
+
+    /* Hero / Featured */
+    .featured {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+                  url('https://images.unsplash.com/photo-1589984662646-e7b08ca2ffe8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=90') center/cover;
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+
+    .featured h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 12vw, 9rem);
+      color: white;
+      margin-bottom: 20px;
+      text-shadow: 0 6px 20px black;
+    }
+
+    .featured h1 span {
+      color: var(--red);
+    }
+
+    .featured p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--red);
+      color: white;
+      padding: 16px 40px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: var(--red-dark);
+    }
+
+    /* Content Sections */
+    .content {
+      padding: 60px 0;
+      background: var(--dark-bg);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.8rem;
+      color: var(--green-light);
+      text-align: center;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+    }
+
+    .news-item {
+      background: var(--dark-gray);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #222;
+    }
+
+    .news-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(200, 16, 46, 0.25);
+    }
+
+    .news-thumb {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .news-body {
+      padding: 20px;
+    }
+
+    .news-date {
+      font-size: 0.9rem;
+      color: var(--text-gray);
+      margin-bottom: 8px;
+    }
+
+    .news-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .news-excerpt {
+      color: var(--text-gray);
+      font-size: 1.05rem;
+    }
+
+    /* Betting Promo Banner */
+    .promo-banner {
+      background: linear-gradient(135deg, var(--green), var
