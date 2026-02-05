@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Darts Hub • Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --color-dark:    #0a0a0a;
+      --color-black:   #111111;
+      --color-red:     #c8102e;
+      --color-red-dark:#a00d25;
+      --color-green:   #006400;     /* darkgreen */
+      --color-green-light: #228b22;
+      --color-gray:    #1a1a1a;
+      --color-light:   #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--color-dark);
+      color: var(--color-light);
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── Header / Nav ─────────────────────────────────────── */
+    header {
+      background: linear-gradient(to bottom, #000000, #0f0f0f);
+      border-bottom: 3px solid var(--color-red);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.1rem;
+      font-weight: 400;
+      color: white;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--color-red);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 38px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #ddd;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: color 0.2s ease, transform 0.15s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background-color: var(--color-red);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ─── Hero ─────────────────────────────────────────────── */
+    .hero {
+      background: 
+        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+        url('https://images.unsplash.com/photo-1589984662646-e7b08ca2ffe8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80') center/cover no-repeat;
+      height: 82vh;
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4.8rem, 12vw, 11rem);
+      line-height: 0.92;
+      letter-spacing: 4px;
+      color: white;
+      margin-bottom: 0.2em;
+      text-shadow: 0 6px 20px rgba(0,0,0,0.9);
+    }
+
+    .hero h1 span {
+      color: var(--color-red);
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      color: #ccc;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background-color: var(--color-red);
+      color: white;
+      padding: 18px 48px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 18px rgba(200,16,46,0.4);
+      border: 2px solid var(--color-red);
+    }
+
+    .cta-btn:hover {
+      background-color: white;
+      color: var(--color-red);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(200,16,46,0.5);
+    }
+
+    /* ─── Quick Cards ──────────────────────────────────────── */
+    .quick-access {
+      padding: 100px 0 120px;
+      background: var(--color-black);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      margin-top: 60px;
+    }
+
+    .card {
+      background: #161616;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #222;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      border-color: var(--color-red);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .card-dart {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 64px;
+      height: 64px;
+      opacity: 0.15;
+      transition: all 0.4s ease;
+    }
+
+    .card:hover .card-dart {
+      opacity: 0.35;
+      transform: scale(1.15) rotate(15deg);
+    }
+
+    .card-content {
+      padding: 48px 32px;
+      text-align: center;
+    }
+
+    .card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.4rem;
+      color: var(--color-green);
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+
+    .card p {
+      color: #aaa;
+      font-size: 1.15rem;
+      margin-bottom: 28px;
+    }
+
+    .card-link {
+      display: inline-block;
+      background: var(--color-green);
+      color: white;
+      padding: 14px 36px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.25s;
+    }
+
+    .card-link:hover {
+      background: var(--color-green-light);
+      transform: translateY(-3px);
+    }
+
+    /* ─── Footer ───────────────────────────────────────────── */
+    footer {
+      background: #000;
+      border-top: 2px solid #222;
+      padding: 80px 0 40px;
+      text-align: center;
+      color: #777;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: var(--color-green);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--color-green-light);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">DARTS<span>HUB</span></div>
+      <ul class="nav-links">
+        <li><a href="#stats">Statistics</a></li>
+        <li><a href="#news">Latest News</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#">Players</a></li>
+        <li><a href="#">Tournaments</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Precision<span>.</span> Power<span>.</span> Passion</h1>
+    <p>Your ultimate destination for darts statistics, live updates, player rankings, tournament coverage and premium darts gear.</p>
+    <a href="#" class="cta-btn">Explore Now</a>
+  </div>
+</section>
+
+<section class="quick-access">
+  <div class="container">
+    <div class="cards-grid">
+
+      <div class="card">
+        <img src="https://img.icons8.com/fluency-systems-regular/96/ffffff/dart.png" 
+             alt="dart icon" class="card-dart">
+        <div class="card-content">
+          <h3>STATS</h3>
+          <p>Three-dart averages, checkout percentages, 180s, best legs, head-to-head records and much more — updated daily.</p>
+          <a href="#" class="card-link">View Statistics</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://img.icons8.com/fluency-systems-regular/96/ffffff/dart.png" 
+             alt="dart icon" class="card-dart">
+        <div class="card-content">
+          <h3>LATEST NEWS</h3>
+          <p>Breaking stories, player interviews, match reports, transfer rumours and behind-the-scenes from the world of darts.</p>
+          <a href="#" class="card-link">Read News</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://img.icons8.com/fluency-systems-regular/96/ffffff/dart.png" 
+             alt="dart icon" class="card-dart">
+        <div class="card-content">
+          <h3>SHOP</h3>
+          <p>Professional dartboards, tungsten barrels, flights, shafts, cases and accessories from top brands — delivered fast.</p>
+          <a href="#" class="card-link">Visit Shop</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 DartsHub • All Rights Reserved • <a href="#">Privacy Policy</a> • <a href="#">Contact</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
