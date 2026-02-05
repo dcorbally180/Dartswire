@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DARTSWIRE • Darts News, Stats, Betting & Gear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --color-dark:    #0a0a0a;
+      --color-black:   #111111;
+      --color-red:     #c8102e;
+      --color-red-dark:#a00d25;
+      --color-green:   #006400;
+      --color-green-light: #228b22;
+      --color-gray:    #1a1a1a;
+      --color-light:   #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--color-dark);
+      color: var(--color-light);
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      background: linear-gradient(to bottom, #000000, #0f0f0f);
+      border-bottom: 5px solid var(--color-red);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.85);
+    }
+
+    .branding {
+      text-align: center;
+      padding: 40px 0 16px;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(6rem, 16vw, 11rem);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      line-height: 0.85;
+    }
+
+    .logo-main {
+      color: white;
+      display: block;
+    }
+
+    .logo-sub {
+      color: var(--color-red);
+      font-size: 0.62em;
+      letter-spacing: 10px;
+      display: block;
+      margin-top: 14px;
+    }
+
+    .main-nav {
+      background: rgba(10,10,10,0.7);
+      padding: 22px 0;
+      text-align: center;
+      border-top: 1px solid #222;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px 60px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-menu li a {
+      color: #ddd;
+      text-decoration: none;
+      font-size: 1.35rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 10px 16px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-menu li a:hover,
+    .nav-menu li a.active {
+      color: white;
+    }
+
+    .nav-menu li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 4px;
+      bottom: -8px;
+      left: 50%;
+      background: var(--color-red);
+      transition: width 0.4s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-menu li a:hover::after,
+    .nav-menu li a.active::after {
+      width: 100%;
+    }
+
+    .hero {
+      background: 
+        linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.94)),
+        url('https://images.stockcake.com/public/f/9/9/f994b46a-c075-4db7-8558-a58ce21563cd/precision-dart-throw-stockcake.jpg') center/cover no-repeat fixed;
+      height: 90vh;
+      min-height: 720px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(7rem, 18vw, 15rem);
+      line-height: 0.82;
+      letter-spacing: 8px;
+      color: white;
+      margin-bottom: 0.08em;
+      text-shadow: 0 12px 36px rgba(0,0,0,1);
+    }
+
+    .hero h1 span {
+      color: var(--color-red);
+    }
+
+    .hero p {
+      font-size: 1.85rem;
+      max-width: 880px;
+      margin: 0 auto 4rem;
+      color: #ccc;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--color-red);
+      color: white;
+      padding: 24px 72px;
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 12px;
+      transition: all 0.35s ease;
+      box-shadow: 0 12px 36px rgba(200,16,46,0.6);
+      border: 3px solid var(--color-red);
+    }
+
+    .cta-btn:hover {
+      background: white;
+      color: var(--color-red);
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(200,16,46,0.7);
+    }
+
+    .featured {
+      padding: 120px 0 160px;
+      background: var(--color-black);
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 6.5rem;
+      color: var(--color-green-light);
+      margin-bottom: 50px;
+      letter-spacing: 4px;
+      text-shadow: 0 6px 16px rgba(0,100,0,0.5);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 50px;
+      margin-top: 80px;
+    }
+
+    .card {
+      background: linear-gradient(135deg, #161616, #0c0c0c);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 3px solid #222;
+      transition: all 0.4s ease;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-24px) scale(1.05);
+      border-color: var(--color-red);
+      box-shadow: 0 36px 72px rgba(200,16,46,0.4);
+    }
+
+    .card-icon {
+      width: 160px;
+      height: 160px;
+      margin: 60px auto 40px;
+      opacity: 0.95;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+      transition: all 0.5s ease;
+    }
+
+    .card:hover .card-icon {
+      transform: scale(1.18) rotate(12deg);
+    }
+
+    .card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5.2rem;
+      color: var(--color-green);
+      margin-bottom: 24px;
+      letter-spacing: 2.5px;
+    }
+
+    .card p {
+      color: #bbb;
+      font-size: 1.35rem;
+      padding: 0 48px 48px;
+    }
+
+    .card-link {
+      display: inline-block;
+      background: var(--color-red);
+      color: white;
+      padding: 20px 64px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 60px;
+      transition: all 0.35s;
+    }
+
+    .card-link:hover {
+      background: var(--color-red-dark);
+      transform: translateY(-6px);
+      box-shadow: 0 18px 42px rgba(200,16,46,0.55);
+    }
+
+    footer {
+      background: #000;
+      border-top: 5px solid var(--color-green);
+      padding: 140px 0 70px;
+      text-align: center;
+      color: #777;
+      font-size: 1.1rem;
+    }
+
+    footer a {
+      color: var(--color-green-light);
+      text-decoration: none;
+      margin: 0 16px;
+    }
+
+    footer a:hover {
+      color: var(--color-green);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .nav-menu { gap: 24px 48px; }
+      .nav-menu li a { font-size: 1.2rem; }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: clamp(5.5rem, 20vw, 10rem); }
+      .hero p { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="branding">
+      <div class="logo">
+        <span class="logo-main">DARTSWIRE</span>
+        <span class="logo-sub">DARTS NEWS • STATS • BETTING • GEAR</span>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <ul class="nav-menu">
+        <li><a href="#news" class="active">News</a></li>
+        <li><a href="#stats">Stats</a></li>
+        <li><a href="#betting">Betting Offers</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#previews">Previews</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>DARTS<span>WIRE</span></h1>
+    <p>Your ultimate hub for PDC & WDF darts — latest news, live stats, Premier League updates, betting offers, previews, reviews and pro gear. Fresh from the oche in February 2026.</p>
+    <a href="#" class="cta-btn">Hit the Board</a>
+  </div>
+</section>
+
+<section class="featured">
+  <div class="container">
+    <h2 class="section-title">CORE SECTIONS</h2>
+
+    <div class="cards-grid">
+
+      <div class="card">
+        <img src="https://media.gettyimages.com/id/72724306/photo/three-darts-in-a-row-one-in-bullseye-on-dart-board-close-up.jpg" 
+             alt="Three darts hitting bullseye" class="card-icon">
+        <h3>NEWS</h3>
+        <p>Breaking PDC stories, World Masters reactions, Luke Littler & Humphries updates, interviews, and daily match reports from the circuit.</p>
+        <a href="#" class="card-link">Latest News</a>
+      </div>
+
+      <div class="card">
+        <img src="https://images.stockcake.com/public/f/9/9/f994b46a-c075-4db7-8558-a58ce21563cd/precision-dart-throw-stockcake.jpg" 
+             alt="Player throwing dart precision" class="card-icon">
+        <h3>STATS</h3>
+        <p>Live averages, 180s, checkouts, Order of Merit, head-to-heads — real-time data for Premier League, Players Championships & more.</p>
+        <a href="#" class="card-link">Dive into Stats</a>
+      </div>
+
+      <div class="card">
+        <img src="https://c8.alamy.com/comp/BC1PHM/player-throwing-dart-blue-square-uk-open-2009-reebok-stadium-bolton-BC1PHM.jpg" 
+             alt="Dart player in action" class="card-icon">
+        <h3>BETTING OFFERS</h3>
+        <p>Top odds, free bets, enhanced markets & tips for Premier League Night 1 in Newcastle (Feb 5), upcoming legs & major events.</p>
+        <a href="#" class="card-link">View Offers</a>
+      </div>
+
+      <div class="card">
+        <img src="https://as1.ftcdn.net/v2/jpg/00/75/60/50/1000_F_75605070_pBTydaftV0ceEnMLZwOI23pmgvLtjmpP.jpg" 
+             alt="Three darts in bullseye" class="card-icon">
+        <h3>SHOP & REVIEWS</h3>
+        <p>Winmau, Target, Harrows gear — expert reviews, comparisons, and deals on boards, tungsten darts, flights & accessories.</p>
+        <a href="#" class="card-link">Shop & Read</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 DARTSWIRE • Independent Darts Coverage • <a href="#">Privacy</a> • <a href="#">Contact</a> • <a href="#">Advertise</a> • <a href="#">Newsletter</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
